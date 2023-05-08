@@ -37,7 +37,7 @@ const ingresarGasto = (Gasto) => {
     tbody.innerHTML += `<tr id="elemento${Gasto.id}">
         <td>${Gasto.id}</td>
         <td>${Gasto.nombre}</td>
-        <td>${Gasto.cantidad}</td> 
+        <td>${Gasto.cantidad}</td>
         <td>
             <a href="#" onclick="borrarGasto(${Gasto.id})" ><i class="bi bi-trash"></i></a>
         </td>
@@ -74,4 +74,8 @@ const borrarGasto = (id) => {
 
     totalGastos = arrayGastos.reduce((total, valor) => total + valor.cantidad, 0);
     document.getElementById('gastoRealizado').innerText = totalGastos;
+}
+const calcularSaldo = (presupuesto, gastoCantidad) => {
+    let saldoInicial = presupuesto - gastoCantidad;
+    document.getElementById('saldo').innerText = saldoInicial;
 }
