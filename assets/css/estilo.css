@@ -1,0 +1,17 @@
+#tablaResultado {
+    background-color: rgb(208, 172, 179);
+}
+
+.gastos {
+    background-color: rgb(232, 161, 175, 0.4);
+    border-style:groove;
+    border-radius: 15px;
+}
+
+.body {
+    background-color:azure ;
+}
+
+.presup {
+    background-color: rgb(154, 238, 154, 0.4);
+}
