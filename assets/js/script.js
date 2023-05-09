@@ -9,9 +9,9 @@ const getId = () => {
 function inputPresupuesto(presupuesto) {
     const presupuestoElemento = document.getElementById('presupuesto').value;
     presupuestoElemento.innerText = presupuesto;;
- document.getElementById('presupuestoInicial').innerText = presupuestoElemento;
-   
-    
+    document.getElementById('presupuestoInicial').innerText = presupuestoElemento;
+
+
 }
 
 const getGastoObj = (nombre, cantidad) => {
@@ -49,19 +49,20 @@ const inputGasto = () => {
     let gastoCantidad = document.getElementById("ingresoCantidad").value;
 
     let Gasto = getGastoObj(gastoNombre, gastoCantidad);
-    
+
     totalGastos += Gasto.cantidad;
-    
+
 
     arrayGastos.push(Gasto);
-    
+let presupuestoFinal = parseInt(document.getElementById('presupuesto').value);
+presupuestoFinal -= totalGastos;
     document.getElementById('gastoRealizado').innerText = totalGastos;
-
+    document.getElementById('saldo').innerText = presupuestoFinal;
     ingresarGasto(Gasto);
 }
 
 const borrarGasto = (id) => {
-    
+
 
     arrayGastos = arrayGastos.filter((gasto) => {
         if (gasto.id == id) {
@@ -71,11 +72,11 @@ const borrarGasto = (id) => {
         }
         return true;
     });
-
     totalGastos = arrayGastos.reduce((total, valor) => total + valor.cantidad, 0);
+
+    const presupuestoInicial = parseInt(document.getElementById('presupuesto').value);
+    const saldoFinal = presupuestoInicial - totalGastos;
+    console.log( saldoFinal);
     document.getElementById('gastoRealizado').innerText = totalGastos;
-}
-const calcularSaldo = (presupuesto, gastoCantidad) => {
-    let saldoInicial = presupuesto - gastoCantidad;
-    document.getElementById('saldo').innerText = saldoInicial;
-}
+    document.getElementById('saldo').innerText = saldoFinal;
+};
